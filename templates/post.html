@@ -14,7 +14,7 @@
                         Posted by
                         <a href="#!">{{ post.author.first_name}} {{ post.author.last_name}}</a>
                         on August 24, 2022
-                    </span>
+                    </span><span>(<a href="{% url 'edit-post' post.pk %}">Edit</a>)</span> <span>(<a href="{% url 'delete-post' post.pk %}">Delete</a>)</span>
                 </div>
             </div>
         </div>
