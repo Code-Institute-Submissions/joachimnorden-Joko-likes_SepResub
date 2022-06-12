@@ -4,32 +4,53 @@
 {% block content %}
 
 {% if user.is_authenticated %}
+{% if user.id == post.author.id %}
 <!-- Page Header-->
-<header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
-    <div class="container position-relative px-4 px-lg-5">
+    <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="post-heading">
+                        <h1>Edit a blog post</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="post-heading">
-                    <h1>Edit a blog post</h1>
+                <div class="form-group">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn btn-primary text-uppercase">Update</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</header>
-<div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-            <div class="form-group">
-                <form method="POST">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button class="btn btn-primary text-uppercase">Update</button>
-                </form>
+    {% else %}
+    <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="post-heading">
+                        <h1>Edit a blog post</h1>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>Please login as the author of the article</p>
             </div>
         </div>
     </div>
-</div>
-
+    {% endif %}
 {% else %}
 <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">

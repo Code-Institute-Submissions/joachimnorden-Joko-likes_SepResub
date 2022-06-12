@@ -15,7 +15,12 @@
                         Posted by
                         <a href="#!">{{ post.author.first_name}} {{ post.author.last_name}}</a>
                         on {{ post.post_date }}
-                    </span>{% if user.is_authenticated %}<span>(<a href="{% url 'edit-post' post.pk %}">Edit</a>)</span> <span>(<a href="{% url 'delete-post' post.pk %}">Delete</a>)</span>{% endif %}
+                    </span>
+                    {% if user.is_authenticated %}
+                        {% if user.id == post.author.id %}
+                        <span>(<a href="{% url 'edit-post' post.pk %}">Edit</a>)</span> <span>(<a href="{% url 'delete-post' post.pk %}">Delete</a>)</span>
+                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -27,6 +32,12 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 {{ post.body|safe }}
+                <br>
+                <hr>
+                <form action="{% url 'like_post' post.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary btn-sm">Like - {{ total_likes }} Likes</button>
+                </form>
             </div>
         </div>
     </div>

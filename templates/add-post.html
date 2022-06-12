@@ -30,6 +30,12 @@
     </div>
 </div>
 
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById("postowner").value 
+        = name;
+</script>
+
 {% else %}
 <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
@@ -50,6 +56,9 @@
         </div>
     </div>
 </div>
+
+
 {% endif %}
+
 
 {%endblock%}
