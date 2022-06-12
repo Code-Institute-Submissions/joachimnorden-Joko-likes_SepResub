@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Category
+from .models import Post, Category, Comment
 
 
 choices = Category.objects.all().values_list('name', 'name')
@@ -34,4 +34,15 @@ class EditForm(forms.ModelForm):
             'subtitle': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add a Subtitle'}),
             'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Start blogging...'}),
+        }
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ()
+
+        widgets = {
+            'Name': forms.TextInput(attrs={'class': 'form-control'}),
+            'body': forms.Textarea(attrs={'class': 'form-control'}),
         }
