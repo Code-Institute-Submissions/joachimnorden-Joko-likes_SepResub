@@ -34,9 +34,18 @@
                 {{ post.body|safe }}
                 <br>
                 <hr>
+
                 <form action="{% url 'like_post' post.pk %}" method="POST">
                     {% csrf_token %}
-                    <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary btn-sm">Like - {{ total_likes }} Likes</button>
+                    {% if user.is_authenticated %}
+                        {% if liked %}
+                        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger btn-sm">Unlike - {{ total_likes }} Likes</button>
+                        {% else %}
+                        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary btn-sm">Like - {{ total_likes }} Likes</button>
+                        {% endif %}
+                    {% else %}
+                    <p><a href="{% url 'login' %}">Login to like</a> - {{ total_likes }} Likes</p>    
+                    {% endif %}
                 </form>
             </div>
         </div>
