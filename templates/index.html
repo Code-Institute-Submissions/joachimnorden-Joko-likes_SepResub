@@ -17,9 +17,9 @@
 
 <!-- Main Content-->
 <div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="row gx-4 gx-lg-5 justify-content-center">    
         <div class="col-md-10 col-lg-8 col-xl-7">
-            {% for post in object_list %}               
+            {% for post in object_list %} 
             <!-- Post preview-->
             <div class="post-preview">
                 <h4><a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a></h4>
@@ -28,18 +28,28 @@
                     <h3 class="post-subtitle">{{ post.subtitle }}</h3>
                 </a>
                 <p class="post-meta">
-                    Posted by
-                    <a href="#!">{{ post.author.first_name}} {{ post.author.last_name}}</a>
-                    on {{ post.post_date }}
+                    Posted by {{ post.author.first_name}} {{ post.author.last_name}} on {{ post.post_date }}
                 </p>
+                
             </div>
-
             <hr class="my-4" />
-            {% endfor %}
-
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+            {% if forloop.counter|divisibleby:3 %}
         </div>
-    </div>
-</div>
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            {% endif %}
+            {% endfor %}
+        </div>
 
+    </div>
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        {% if page_obj.has_previous %}
+        <div class="d-flex justify-content-start mb-4"><a class="btn btn-primary text-uppercase" href="?page={{ page_obj.previous_page_number }}">Newer Posts →</a></div>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="?page={{ page_obj.next_page_number }}">Older Posts →</a></div>
+        {% endif %}
+    </nav>
+    {% endif %}
+</div>
 {%endblock%}
