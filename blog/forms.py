@@ -1,5 +1,6 @@
 from django import forms
 from .models import Post, Category, Comment
+from ckeditor.widgets import CKEditorWidget
 
 
 choices = Category.objects.all().values_list('name', 'name')
@@ -9,6 +10,7 @@ for item in choices:
 
 
 class PostForm(forms.ModelForm):
+    body = forms.CharField(widget=CKEditorWidget())
     class Meta:
         model = Post
         fields = ('title', 'title_tag', 'header_image', 'subtitle', 'author', 'category', 'body')
@@ -24,6 +26,7 @@ class PostForm(forms.ModelForm):
 
 
 class EditForm(forms.ModelForm):
+    body = forms.CharField(widget=CKEditorWidget())
     class Meta:
         model = Post
         fields = ('title', 'title_tag', 'subtitle', 'category', 'body')
