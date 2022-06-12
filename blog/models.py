@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-from datetime import datetime, date
+from datetime import date
 from ckeditor.fields import RichTextField
 from cloudinary.models import CloudinaryField
 
@@ -25,7 +25,7 @@ class Profile(models.Model):
         return str(self.user)
 
     def get_absolute_url(self):
-        return reverse('home')    
+        return reverse('home')
 
 
 class Post(models.Model):
@@ -35,9 +35,9 @@ class Post(models.Model):
     subtitle = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = RichTextField(blank=True, null=True)
-    post_date = models.DateField(auto_now_add=True)
+    post_date = models.DateField(default=date.today)
     category = models.CharField(max_length=255, default='gaming')
-    likes = models.ManyToManyField(User, related_name='blog_posts')
+    likes = models.ManyToManyField(User, related_name='blog_posts', blank=True)
 
     class Meta:
         ordering = ['-post_date']
@@ -49,14 +49,14 @@ class Post(models.Model):
         return reverse('post-detail', args=(str(self.id)))
 
     def total_likes(self):
-        return self.likes.count()    
+        return self.likes.count()
 
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     body = models.TextField()
-    date_added = models.DateTimeField(auto_now_add=True)    
+    date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return '%s - %s' % (self.post.title, self.name)    
+        return '%s - %s' % (self.post.title, self.name)

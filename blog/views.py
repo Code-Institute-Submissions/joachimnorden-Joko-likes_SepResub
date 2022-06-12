@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Category, Comment
-from .forms import PostForm, EditForm, CommentForm
+from .forms import PostForm, EditForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 
@@ -47,14 +47,13 @@ class AddPostView(CreateView):
 
 class AddCommentView(CreateView):
     model = Comment
-    #form_class = 'CommentForm'
     template_name = 'add-comment.html'
     fields = ('name', 'body')
 
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
         return super().form_valid(form)
-    
+
     def get_success_url(self):
         return reverse_lazy('post-detail', kwargs={'pk': self.kwargs['pk']})
 
@@ -62,7 +61,7 @@ class AddCommentView(CreateView):
 class AddCategoryView(CreateView):
     model = Category
     template_name = 'add-category.html'
-    fields = '__all__'    
+    fields = '__all__'
 
 
 class EditPostView(UpdateView):
@@ -79,12 +78,12 @@ class DeletePostView(DeleteView):
 
 def CategoryListView(request):
     cat_menu_list = Category.objects.all()
-    return render(request, 'category-list.html', {'cat_menu_list':cat_menu_list})
+    return render(request, 'category-list.html', {'cat_menu_list': cat_menu_list})
 
 
 def CategoryView(request, category):
     category_posts = Post.objects.filter(category=category.replace('-', ' '))
-    return render(request, 'categories.html', {'category':category.title().replace('-', ' '), 'category_posts':category_posts})
+    return render(request, 'categories.html', {'category': category.title().replace('-', ' '), 'category_posts': category_posts})
 
 
 def LikeView(request, pk):
@@ -93,7 +92,7 @@ def LikeView(request, pk):
     if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)
         liked = False
-    else:    
+    else:
         post.likes.add(request.user)
         liked = True
 
