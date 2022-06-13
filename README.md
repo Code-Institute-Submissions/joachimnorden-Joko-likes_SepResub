@@ -102,7 +102,6 @@ Using Bootstraps native font-stack that selects the best font-family for each OS
 -   A list of all the articles with links to the full article, the author and the category
 
 -   A comment, author and like section on each article
-    <h2 align="left"><img src="static/images/joko-like-comment-like-author.jpg" width="210"></h2>
 
 -   An author profile page with a profile picture and bio
     <h2 align="left"><img src="static/images/joko-like-author.jpg" width="210"></h2>
