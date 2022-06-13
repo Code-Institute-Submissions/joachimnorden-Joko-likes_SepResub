@@ -400,6 +400,7 @@ Once the project been loaded into the IDE it is necessary to install the necessa
 
 ## Code
 
+-   Used a bootstrap template for the initial design [startbootstrap](https://startbootstrap.com/theme/clean-blog)
 
 -   The inspiration for the script making navbar appear on scroll up [codepen](https://codepen.io/philipbenton/pen/DbREyB)
 
