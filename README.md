@@ -18,7 +18,7 @@ This is a simple blog made for copywriters and content creator to easily create 
     * [Features to be added](#Features-to-be-added)
 2. [Technologies Used](#Technologies-Used)
     * [Languages Used](#Languages-Used)
-    * [Frameworks, Libraries & Programs Used](#Frameworks-Libraries-Programs-Used)
+    * [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
 3. [Testing](#Testing)
     * [Validators](#Validators)
     * [Manual Testing](#Manual-Testing)
@@ -134,9 +134,11 @@ Using Bootstraps native font-stack that selects the best font-family for each OS
 
 ## Languages Used
 
--   [HTML]()
+-   [HTML5](https://en.wikipedia.org/wiki/HTML5)
 
--   [CSS]()
+-   [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+
+-   [JavaScript](https://www.javascript.com/)
 
 -   [PYTHON](https://www.python.org/)
         The following Python modules were used on this project:
