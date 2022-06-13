@@ -5,7 +5,7 @@
 {% block content %}
 <!-- Page Header-->
 {% if "placeholder" in post.header_image.url %}
-<header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
+<header class="masthead" style="background-image: url('{% static 'images/pexels-pixabay-265072.jpg' %}')">
 {% else %}   
 <header class="masthead" style="background-image: url('{{ post.header_image.url }}')">
 {% endif %}

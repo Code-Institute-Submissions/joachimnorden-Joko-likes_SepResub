@@ -1,6 +1,6 @@
 from django import forms
 from .models import Post, Category, Comment
-from ckeditor.widgets import CKEditorWidget
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 
 
 choices = Category.objects.all().values_list('name', 'name')
@@ -10,7 +10,6 @@ for item in choices:
 
 
 class PostForm(forms.ModelForm):
-    body = forms.CharField(widget=CKEditorWidget())
     class Meta:
         model = Post
         fields = ('title', 'title_tag', 'header_image', 'subtitle', 'author', 'category', 'body')
@@ -21,12 +20,11 @@ class PostForm(forms.ModelForm):
             'subtitle': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add a Subtitle'}),
             'author': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'postowner', 'type': 'hidden'}),
             'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
-            'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Start blogging...'}),
+            'body': SummernoteWidget(),
         }
 
 
 class EditForm(forms.ModelForm):
-    body = forms.CharField(widget=CKEditorWidget())
     class Meta:
         model = Post
         fields = ('title', 'title_tag', 'subtitle', 'category', 'body')
@@ -36,7 +34,7 @@ class EditForm(forms.ModelForm):
             'title_tag': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add a Title tag'}),
             'subtitle': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add a Subtitle'}),
             'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
-            'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Start blogging...'}),
+            'body': SummernoteWidget(),
         }
 
 

@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import date
-from ckeditor.fields import RichTextField
 from cloudinary.models import CloudinaryField
 
 
@@ -34,7 +33,7 @@ class Post(models.Model):
     title_tag = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = RichTextField(blank=True, null=True)
+    body = models.TextField(blank=True, null=True)
     post_date = models.DateField(default=date.today)
     category = models.CharField(max_length=255, default='gaming')
     likes = models.ManyToManyField(User, related_name='blog_posts', blank=True)
