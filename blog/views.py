@@ -13,9 +13,7 @@ class PostView(ListView):
     ordering = ['-post_date']
 
     def get_context_data(self, *args, **kwargs):
-        cat_menu = Category.objects.all()
         context = super(PostView, self).get_context_data(*args, **kwargs)
-        context['cat_menu'] = cat_menu
         return context
 
 
@@ -24,7 +22,6 @@ class ArticleView(DetailView):
     template_name = 'post.html'
 
     def get_context_data(self, *args, **kwargs):
-        cat_menu = Category.objects.all()
         context = super(ArticleView, self).get_context_data(*args, **kwargs)
         getlikes = get_object_or_404(Post, id=self.kwargs['pk'])
         total_likes = getlikes.total_likes()
@@ -33,7 +30,6 @@ class ArticleView(DetailView):
         if getlikes.likes.filter(id=self.request.user.id).exists():
             liked = True
 
-        context['cat_menu'] = cat_menu
         context['total_likes'] = total_likes
         context['liked'] = liked
         return context
