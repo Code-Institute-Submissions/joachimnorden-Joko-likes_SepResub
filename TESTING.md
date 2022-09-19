@@ -66,7 +66,7 @@
 
 ## Add Post Page
 
-Unsolved bugs! A lot of errors related to the form. Due to lack of time if remains unsolved.
+Unsolved bugs! A lot of errors related to the form. Due to lack of time it remains unsolved.
 
 
 # CSS

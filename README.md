@@ -161,19 +161,19 @@ The website is made from 2 apps:
 -   [JavaScript](https://www.javascript.com/)
 
 -   [PYTHON](https://www.python.org/)
-        The following Python modules were used on this project:
-            asgiref==3.5.2
-            cloudinary==1.29.0
-            dj-database-url==0.5.0
-            dj3-cloudinary-storage==0.0.6
-            Django==3.2.13
-            django-ckeditor==6.4.2
-            django-js-asset==2.0.0
-            django-summernote==0.8.20.0
-            gunicorn==20.1.0
-            psycopg2==2.9.3
-            pytz==2022.1
-            sqlparse==0.4.2
+        - The following Python modules were used on this project:
+            - asgiref==3.5.2
+            - cloudinary==1.29.0
+            - dj-database-url==0.5.0
+            - dj3-cloudinary-storage==0.0.6
+            - Django==3.2.13
+            - django-ckeditor==6.4.2
+            - django-js-asset==2.0.0
+            - django-summernote==0.8.20.0
+            - gunicorn==20.1.0
+            - psycopg2==2.9.3
+            - pytz==2022.1
+            - sqlparse==0.4.2
 
 
 ## Frameworks, Libraries & Programs Used
