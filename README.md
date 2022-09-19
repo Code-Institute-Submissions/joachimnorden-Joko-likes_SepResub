@@ -86,11 +86,17 @@ As a site admin/User you can manage all posts and comments and easily add new po
     <h2 align="left"><img src="static/images/joko-blog-sitemap.jpg" width="300"></h2>
 
 
-## Design
+# Design
 
+## Design choice
+Bootstrap provides a flexible framework for building upon and wherever possible its structure has been used and modified to achieve the desired functionality and feel.
 Simple, simple and simple to keep it uncluttered. 
 Using a big hero to set the mood and theme for the articles. 
 Using Bootstraps native font-stack that selects the best font-family for each OS and device.
+
+## Color schema
+
+The color scheme is black and white. This is to keep the text in the focus.
 
 
 ## Features
@@ -127,6 +133,21 @@ Using Bootstraps native font-stack that selects the best font-family for each OS
 
 
 [Go to top](#Table-of-contents)
+
+# Structure
+
+Simplicity helps users to quickly and easily access the app and navigate within the app.
+
+The website is made from 2 apps:
+
+- Blog
+- Members
+
+## Database schema
+
+<p align="center">
+<img src="assets/documents/testing_docs/QuickDBD-export-joko-like.png" width="1000" height="100%">
+</p>
 
 # Technologies Used
 
@@ -199,66 +220,7 @@ Using Bootstraps native font-stack that selects the best font-family for each OS
 
 # Testing
 
-## Validators
-
-
-The W3C Markup Validator, W3C CSS Validator Services, PEP8 Validator and JSHint were used to validate every page of the project to ensure there were no syntax errors in the project.
-
-
--   HTML
-
-     - No errors were returned when passing through the official W3C validator
-
--   CSS
-
-     - No errors were returned when passing through the official W3C validator
-
--   Javascript
-
-    - No major errors were returned when passing through the JSHint validator.
-
--   Python
-
-     - Only "Line to long" errors were returned when passing through the PEP8 online validator    
-
-- Accessibility
-
-    - I confirmed thet the colors and fonts choses are easy to read and accessible by running it through lighthouse in devtools.
-
-    <h2 align="center"><img src="static/images/lighthouse-result-joko-like.jpg"></h2>
-
-
-## Manual Testing
-
-- Tested on various browser such as Chrome, Firefox, Edge and Safari (mac)
-- Tested on various devices such as Windows, Mac, iPhone and iPad
-
-- ### As a Visitor 
-- Click all the links
-- Adding a comment
-- Can see number of likes
-- Gets a warning message if entered an url that requires authentication
-- Can sign up succesfully
-
-- ### As Registered and Logged in User
-- Can like a post
-- Can edit and delete your own post
-- Can add a new category
-- Can Edit profile
-- Can change password
-
-[Go to top](#Table-of-contents)
-
-## Known Bugs
-
-- On Add post and Edit post page the CKEditor for adding a Rich Text Editor didn't work
-	- Fixed by changing CKEditor to Summernote instead
-
-- As an admin I couldn't save a Post without picking a Like.
-	- Fixed by setting blank=True on the model.
-
-- Category-pages doesn't work if a category starts with a capital letter.
-
+Testing and results can be found [here](TESTING.md).
 
 # Deployment
 
