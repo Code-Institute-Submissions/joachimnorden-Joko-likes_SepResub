@@ -9,6 +9,7 @@ from blog.models import Profile
 
 
 class ProfilePageForm(forms.ModelForm):
+    """ Profile page form """
     class Meta:
         model = Profile
         fields = ("bio", "profile_pic")
@@ -19,6 +20,7 @@ class ProfilePageForm(forms.ModelForm):
 
 
 class SignUpForm(UserCreationForm):
+    """ Sign up form """
     email = forms.EmailField(widget=forms.EmailInput(attrs={
         "class": "form-control"}))
     first_name = forms.CharField(
@@ -50,6 +52,7 @@ class SignUpForm(UserCreationForm):
 
 
 class EditProfileForm(UserChangeForm):
+    """ Edit profile page form """
     username = forms.CharField(
         max_length=100, widget=forms.TextInput(attrs={
             "class": "form-control"})
@@ -67,10 +70,11 @@ class EditProfileForm(UserChangeForm):
 
     class Meta:
         model = User
-        fields = ("username", "first_name", "last_name", "email", "password")
+        fields = ("username", "first_name", "last_name", "email")
 
 
 class PasswordChangingForm(PasswordChangeForm):
+    """ Change password form """
     old_password = forms.CharField(
         max_length=100,
         widget=forms.PasswordInput(attrs={
