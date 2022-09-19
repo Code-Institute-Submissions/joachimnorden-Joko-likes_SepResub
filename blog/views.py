@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import (ListView, DetailView, CreateView,
+                                  UpdateView, DeleteView)
 from .models import Post, Category, Comment
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy, reverse
@@ -78,12 +79,17 @@ class DeletePostView(DeleteView):
 
 def CategoryListView(request):
     cat_menu_list = Category.objects.all()
-    return render(request, 'category-list.html', {'cat_menu_list': cat_menu_list})
+    return render(request, 'category-list.html', {
+        'cat_menu_list': cat_menu_list})
 
 
 def CategoryView(request, category):
-    category_posts = Post.objects.filter(category=category.replace('-', ' '))
-    return render(request, 'categories.html', {'category': category.title().replace('-', ' '), 'category_posts': category_posts})
+    category_posts = Post.objects.filter(
+        category=category.replace('-', ' '))
+    return render(request, 'categories.html', {
+        'category': category.title().replace('-', ' '),
+        'category_posts': category_posts
+        })
 
 
 def LikeView(request, pk):

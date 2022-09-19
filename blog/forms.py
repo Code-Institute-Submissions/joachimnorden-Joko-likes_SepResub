@@ -1,6 +1,6 @@
 from django import forms
 from .models import Post, Category, Comment
-from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
+from django_summernote.widgets import SummernoteWidget
 
 
 choices = Category.objects.all().values_list('name', 'name')
@@ -12,14 +12,24 @@ for item in choices:
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'title_tag', 'header_image', 'subtitle', 'author', 'category', 'body')
+        fields = ('title', 'title_tag', 'header_image', 'subtitle',
+                  'author', 'category', 'body')
 
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add a Title'}),
-            'title_tag': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add a Title tag'}),
-            'subtitle': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add a Subtitle'}),
-            'author': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'postowner', 'type': 'hidden'}),
-            'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
+            'title': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Add a Title'}),
+            'title_tag': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Add a Title tag'}),
+            'subtitle': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Add a Subtitle'}),
+            'author': forms.TextInput(attrs={
+                'class': 'form-control', 'value': '',
+                'id': 'postowner', 'type': 'hidden'}),
+            'category': forms.Select(choices=choice_list, attrs={
+                'class': 'form-control'}),
             'body': SummernoteWidget(),
         }
 
@@ -30,10 +40,14 @@ class EditForm(forms.ModelForm):
         fields = ('title', 'title_tag', 'subtitle', 'category', 'body')
 
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add a Title'}),
-            'title_tag': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add a Title tag'}),
-            'subtitle': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add a Subtitle'}),
-            'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
+            'title': forms.TextInput(attrs={
+                'class': 'form-control', 'placeholder': 'Add a Title'}),
+            'title_tag': forms.TextInput(attrs={
+                'class': 'form-control', 'placeholder': 'Add a Title tag'}),
+            'subtitle': forms.TextInput(attrs={
+                'class': 'form-control', 'placeholder': 'Add a Subtitle'}),
+            'category': forms.Select(choices=choice_list, attrs={
+                'class': 'form-control'}),
             'body': SummernoteWidget(),
         }
 
